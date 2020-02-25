@@ -1,6 +1,6 @@
 // app/controller/users.js
 const Controller = require('egg').Controller;
-const { Sequelize } = require('Sequelize')
+const { Sequelize } = require('sequelize')
 const {gt, lte, ne, in: opIn,like} = Sequelize.Op;
 
 function toInt(str) {

@@ -29,11 +29,11 @@ module.exports = appInfo => {
   }
   config.sequelize = {
     dialect:'mysql',
-    host:'127.0.0.1',
+    host:'106.15.203.69',
     port:3306,
-    database:'world',
+    database:'webgl',
     username: 'root',
-    password: '123456',
+    password: 'Jrh20060607+',
   }
   config.security = {
     csrf:{
@@ -43,6 +43,17 @@ module.exports = appInfo => {
   config.logger = {
     level: 'DEBUG',
     dir:'logs/output'
+  }
+  config.swaggerdoc = {
+    dirScanner: './app/controller',
+    apiInfo: {
+      title: 'egg-example-api',
+      description: 'example for swaggerdoc',
+      version: '1.0.0',
+    },
+    schemes: ['http'],
+    enable: true,
+    routerMap: false, // 禁止自动注册路由, 否则会找不到注入对象
   }
   // config.customLogger = {
   //   scheduleLogger: {

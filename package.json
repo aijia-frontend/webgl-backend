@@ -11,6 +11,7 @@
     "egg-mysql": "^3.0.0",
     "egg-scripts": "^2.11.0",
     "egg-sequelize": "^5.2.1",
+    "egg-swagger-doc-feat": "^2.2.13",
     "egg-view-ejs": "^2.0.0",
     "mysql2": "^2.1.0",
     "sequelize-cli": "^5.5.1"
@@ -28,8 +29,8 @@
     "node": ">=10.0.0"
   },
   "scripts": {
-    "start": "egg-scripts start --daemon --title=egg-server-egg basic project DEBUG=common-bin",
-    "stop": "egg-scripts stop --title=egg-server-egg basic project",
+    "start": "egg-scripts start --daemon --title=webgl-backend",
+    "stop": "egg-scripts stop --title=webgl-backend",
     "dev": "egg-bin dev",
     "debug": "egg-bin debug",
     "test": "npm run lint -- --fix && npm run test-local",

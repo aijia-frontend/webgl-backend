@@ -16,7 +16,9 @@ module.exports = appInfo => {
   config.keys = appInfo.name + '_eggjs jwt';
 
   // add your middleware config here
-  config.middleware = [];
+  config.middleware = [
+    'jwt'
+  ];
 
   // add your user config here
   const userConfig = {
@@ -26,7 +28,7 @@ module.exports = appInfo => {
     mapping: {
       '.html': 'ejs',
     },
-  }
+  };
   config.sequelize = {
     dialect:'mysql',
     host:'106.15.203.69',
@@ -36,13 +38,16 @@ module.exports = appInfo => {
     password: 'Jrh20060607+',
   }
   config.security = {
-    csrf:{
-      enable:false
-    }
-  }
+    csrf: {
+      enable: false,
+    },
+  };
   config.logger = {
     level: 'DEBUG',
-    dir:'logs/output'
+    dir: 'logs/output',
+  };
+  config.jwt= {
+    secret:'aijia123dr456beta789'
   }
   config.swaggerdoc = {
     dirScanner: './app/controller',

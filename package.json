@@ -13,6 +13,8 @@
     "egg-sequelize": "^5.2.1",
     "egg-swagger-doc-feat": "^2.2.13",
     "egg-view-ejs": "^2.0.0",
+    "js-md5": "^0.7.3",
+    "jsonwebtoken": "^8.5.1",
     "mysql2": "^2.1.0",
     "sequelize-cli": "^5.5.1"
   },
@@ -38,7 +40,10 @@
     "cov": "egg-bin cov",
     "lint": "eslint .",
     "ci": "npm run lint && npm run cov",
-    "autod": "autod"
+    "autod": "autod",
+    "m:new": "sequelize migration:create",
+    "m:up": "sequelize db:migrate",
+    "m:down": "sequelize db:migrate:undo"
   },
   "ci": {
     "version": "10"

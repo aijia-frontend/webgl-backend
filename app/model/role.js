@@ -2,12 +2,11 @@
 module.exports = app => {
   const {
     STRING,
-    CHAR,
     DATE,
     BOOLEAN,
     INTEGER,
   } = app.Sequelize;
-  const User = app.model.define('user', {
+  const Role = app.model.define('Role', {
     // 主键
     id: {
       type: INTEGER,
@@ -15,25 +14,22 @@ module.exports = app => {
       autoIncrement: true,
       comment: '主键',
     },
-    // 用户名
-    user_name: {
+    // 角色名
+    role_name: {
       type: STRING(30),
       comment: '用户名',
     },
-    // 密码
-    pwd: CHAR(32),
     // 状态
-    state: {
-      type:BOOLEAN,
-      defaultValue:1,
-    },
+    state: BOOLEAN,
     // 创建时间
     created_at: DATE,
     // 更新时间
     updated_at: DATE,
   });
-  User.associate = function() {
-    app.model.User.belongsTo(app.model.Role);
+  Role.associate = function() {
+    app.model.Role.hasMany(app.model.User, {
+      as: 'users',
+    });
   };
-  return User;
+  return Role;
 };

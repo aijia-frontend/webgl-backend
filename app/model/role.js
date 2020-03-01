@@ -13,9 +13,10 @@ module.exports = app => {
       primaryKey: true,
       autoIncrement: true,
       comment: '主键',
+      UNIQUE:true // UNIQUE约束，在数据库层面保证一致性
     },
     // 角色名
-    role_name: {
+    roleName: {
       type: STRING(30),
       comment: '用户名',
     },

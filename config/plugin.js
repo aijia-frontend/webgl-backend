@@ -6,16 +6,20 @@ module.exports = {
   // static: {
   //   enable: true,
   // }
-  ejs:{
+  ejs: {
     enable: true,
     package: 'egg-view-ejs'
   },
-  sequelize:{
+  sequelize: {
     enable: true,
     package: 'egg-sequelize',
   },
   swaggerdoc: {
     enable: true,
     package: 'egg-swagger-doc-feat',
+  },
+  redis: {
+    enable: true,
+    package: 'egg-redis',
   }
 };

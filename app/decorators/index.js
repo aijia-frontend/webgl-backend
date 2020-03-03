@@ -6,7 +6,6 @@ const {
  * @param { roleName:String } 访问该接口所需的角色名称 
  */
 exports.Route = (roleType) => {
-  console.log('===================',Authorization[roleType])
   return function (target, name, descriptor) {
     const old = descriptor.value;
     // AOP劫持会话

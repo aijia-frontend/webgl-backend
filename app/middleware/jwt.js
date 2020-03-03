@@ -11,7 +11,6 @@ module.exports = (options,app) => {
       } else {
         try {
           const user = JSON.parse(await app.redis.get(token));
-          console.log('sdfsdfsdfsdfsdfsdf',user)
           if (user && user.userName) {
             await next();
           }else{

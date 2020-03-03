@@ -1,6 +1,12 @@
 'use strict';
 module.exports = app => {
-  const { STRING,CHAR,DATE,BOOLEAN,INTEGER,} = app.Sequelize;
+  const {
+    STRING,
+    CHAR,
+    DATE,
+    BOOLEAN,
+    INTEGER,
+  } = app.Sequelize;
   const User = app.model.define('user', {
     // 主键
     id: {
@@ -8,26 +14,33 @@ module.exports = app => {
       primaryKey: true,
       autoIncrement: true,
       comment: '主键',
-      UNIQUE:true // UNIQUE约束，在数据库层面保证一致性
+      UNIQUE: true // UNIQUE约束，在数据库层面保证一致性
     },
     // 用户名
     userName: {
       type: STRING(30),
       comment: '用户名',
-      allowNull: false,//不允许为空
+      allowNull: false, //不允许为空
+      // field:'user_name',//重写了这个字段的字段名；
+    },
+    // 手机号
+    mobile: {
+      type: STRING(11),
+      comment: '手机号',
+      allowNull: false, //不允许为空
       // field:'user_name',//重写了这个字段的字段名；
     },
     // 密码
-    pwd: CHAR(32),
+    password: CHAR(32),
     // 状态
     state: {
-      type:BOOLEAN,
-      defaultValue:1,
+      type: BOOLEAN,
+      defaultValue: 1,
     },
-  },{
+  }, {
     freezeTableName: true, // 默认false修改表名为复数，true不修改表名，与数据库表名同步 
-    timestamps:true, // 是否自动添加时间戳createAt，updateAt,如果为false,数据库不生成create_at和update_at
-    tableName: 'users', 
+    timestamps: true, // 是否自动添加时间戳createAt，updateAt,如果为false,数据库不生成create_at和update_at
+    tableName: 'users',
     underscored: true, // 字段以下划线（_）来分割（默认是驼峰命名风格）,
     // // 中间表的model
     // through: app.model.groupUser,
@@ -44,7 +57,7 @@ module.exports = app => {
     // 将updatedAt字段改个名
     // updatedAt: 'utime'
   });
-  User.associate = function() {
+  User.associate = function () {
     app.model.User.belongsTo(app.model.Role);
   };
   return User;

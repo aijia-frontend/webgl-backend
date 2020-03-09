@@ -88,6 +88,16 @@ module.exports = appInfo => {
   // config.schedule = {
   //     directory: [],
   // };
+　config.security = {
+　　csrf: {
+　　　enable: false
+　　},
+　　  domainWhiteList: [ '*' ]
+　　};
+  config.cors = {
+    origin: '*',
+    allowMethods: 'GET,HEAD,PUT,POST,DELETE,PATCH,OPTIONS'
+  };
   return {
     ...config,
     ...userConfig

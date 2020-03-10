@@ -38,7 +38,10 @@
   "scripts": {
     "start": "egg-scripts start --daemon --title=webgl-backend",
     "stop": "egg-scripts stop --title=webgl-backend",
-    "dev": "egg-bin dev",
+    "dev": "npm run dev:sit",
+    "dev:sit": "egg-bin dev --env=sit",
+    "dev:pre": "egg-bin dev --env=pre",
+    "dev:prd": "egg-bin dev --env=prd",
     "debug": "egg-bin debug",
     "test": "npm run lint -- --fix && npm run test-local",
     "test-local": "egg-bin test",

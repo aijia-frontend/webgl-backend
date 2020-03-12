@@ -10,11 +10,24 @@ class UserController extends BaseController {
   /**
    * @description 用户校验
    */
-  async verify() {
-    const { ctx, app } = this;
+  async verify(...args) {
+    const { ctx, app, service } = this;
+    try{
+    ctx.validate({
+      mobile: /^1[3456789]\d{9}$/,
+      password: 'password'
+    })
+    }catch(err){
+      console.log(err)
+      let msg = err.errors.reduce((sum,cur,index)=>{
+        return sum += `${index ? ';' : ''} ${index+1}:${cur.field} ${cur.message}`
+      },'')
+      ctx.body = this.JsonBackResult(0, {}, msg);
+      return;
+    }
     const { mobile, password } = ctx.request.body;
     if (!mobile || !password) return [0, "用户名或密码不能为空"];
-    const [code, data, msg] = await ctx.service.user.verifyUser(mobile, password);
+    const [code, data, msg] = await service.user.verifyUser(mobile, password);
     ctx.body = this.JsonBackResult(code, data, msg);
   }
   /**
@@ -24,7 +37,11 @@ class UserController extends BaseController {
 
     const { ctx, app } = this;
     const { mobile, password,captcha } = ctx.request.body;
- 
+    ctx.validate({
+      mobile: /^1[3456789]\d{9}$/,
+      password: 'password',
+      captcha: 'string'
+    })
     if (!mobile || !password || !captcha){
       ctx.body = this.JsonBackResult(0, {},"用户名、密码、验证码不能为空");
       return;

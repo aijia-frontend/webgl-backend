@@ -78,16 +78,31 @@ module.exports = appInfo => {
   // config.schedule = {
   //     directory: [],
   // };
-　config.security = {
-　　csrf: {
-　　　enable: false
-　　},
-　　  domainWhiteList: [ '*' ]
-　　};
+  config.security = {
+    csrf: {
+      enable: false
+    },
+    // 用于重定向非本域的域名地址，如果数组为空或者"*"则可以向所有域名重定向
+    domainWhiteList: ['*']
+  };
   // 跨域配置 
   config.cors = {
     origin: '*',
     allowMethods: 'GET,HEAD,PUT,POST,DELETE,PATCH,OPTIONS'
+  };
+  config.validate = {
+    // convert: false,
+    // validateRoot: false,
+  };
+  config.bodyParser = {
+    jsonLimit: '1mb',
+    formLimit: '1mb',
+  };
+  // 框架通过内置 Multipart 插件来支持获取用户上传的文件
+  config.multipart = {
+    mode: 'file',
+    // fileExtensions: [ '.apk' ] // 增加对 apk 扩展名的文件支持
+    // whitelist: [ '.png' ], // 覆盖整个白名单，只允许上传 '.png' 格式
   };
   return {
     ...config,

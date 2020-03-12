@@ -16,6 +16,7 @@
     "egg-scripts": "^2.11.0",
     "egg-sequelize": "^5.2.1",
     "egg-swagger-doc-feat": "^2.2.13",
+    "egg-validate": "^2.0.2",
     "egg-view-ejs": "^2.0.0",
     "js-md5": "^0.7.3",
     "jsonwebtoken": "^8.5.1",

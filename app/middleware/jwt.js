@@ -4,7 +4,7 @@ module.exports = (options,app) => {
   return async function (ctx, next) {
     const token = ctx.request.header.authorization;
     if (ctx.path === '/register' || ctx.path === '/verify') {
-      await next();
+      await next({name:'sa'});
     } else {
       if (!token) {
         ctx.throw(401, '未登录， 请先登录');

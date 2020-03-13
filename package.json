@@ -39,7 +39,7 @@
   "scripts": {
     "start": "egg-scripts start --daemon --title=webgl-backend",
     "stop": "egg-scripts stop --title=webgl-backend",
-    "dev": "npm run dev:sit",
+    "dev": "egg-bin dev env:sit",
     "dev:sit": "egg-bin dev --env=sit",
     "dev:pre": "egg-bin dev --env=pre",
     "dev:prd": "egg-bin dev --env=prd",
@@ -50,7 +50,7 @@
     "lint": "eslint .",
     "ci": "npm run lint && npm run cov",
     "autod": "autod",
-    "m:new": "sequelize migration:create",
+    "m:new": "sequelize migration:create --name",
     "m:up": "sequelize db:migrate",
     "m:down": "sequelize db:migrate:undo"
   },

@@ -1,16 +1,22 @@
 const Controller = require('egg').Controller;
+const _state = [ ['[object Number]'], [ '[object Object]', '[object Array]', '[object String]' ], ['[object String]'] ];
 class BaseController extends Controller {
+
   JsonBackResult(...args) {
-    let result = {};
-    args[0] != null && (Object.assign(result, {
-        code: args[0]
-      }))
-    args[1] != null && Object.assign(result, {
-        data: args[1]
-      })
-    args[2] != null && Object.assign(result, {
-        msg: args[2]
-      })
+    let result = { code: 0, data: {}, msg: '' },
+      keys = Object.keys(result),
+      i = -1;
+    while (++i < keys.length) {
+      let state = false,
+        j = -1,
+        length = Object.prototype.toString.call(_state[i]) === '[object Array]' ? _state[i].length : 0;
+      while (++j < length) {
+        state = state || Object.prototype.toString.call(args[i]) === _state[i][j];
+      }
+      if (state) {
+        result[keys[i]] = args[i];
+      }
+    }
     return result;
   }
 }

@@ -1,6 +1,6 @@
 module.exports = {
-  getApi(){
+  getApi() {
     // 这里this 指向this.ctx
-    return '121212'
-  }
-}
+    return '121212';
+  },
+};

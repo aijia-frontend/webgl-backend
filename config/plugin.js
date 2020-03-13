@@ -8,7 +8,7 @@ module.exports = {
   // }
   ejs: {
     enable: true,
-    package: 'egg-view-ejs'
+    package: 'egg-view-ejs',
   },
   sequelize: {
     enable: true,
@@ -24,10 +24,10 @@ module.exports = {
   },
   cors: {
     enable: true,
-    package: 'egg-cors'
+    package: 'egg-cors',
   },
   validate: {
     enable: true,
     package: 'egg-validate',
-  }
+  },
 };

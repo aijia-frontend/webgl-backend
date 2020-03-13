@@ -32,5 +32,5 @@ $ npm stop
 
 [egg]: https://eggjs.org
 
-- Use `npm run m:new -- --name=User` 创建migration文件
+- Use `npm run m:new users` 创建migration文件
 - Use `npm run m:up` 进行数据库创建、变更

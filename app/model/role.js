@@ -13,7 +13,7 @@ module.exports = app => {
       primaryKey: true,
       autoIncrement: true,
       comment: '主键',
-      UNIQUE:true // UNIQUE约束，在数据库层面保证一致性
+      UNIQUE: true, // UNIQUE约束，在数据库层面保证一致性
     },
     // 角色名
     roleName: {
@@ -22,10 +22,6 @@ module.exports = app => {
     },
     // 状态
     state: BOOLEAN,
-    // 创建时间
-    created_at: DATE,
-    // 更新时间
-    updated_at: DATE,
   });
   Role.associate = function() {
     app.model.Role.hasMany(app.model.User, {

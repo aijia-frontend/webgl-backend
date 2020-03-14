@@ -2,7 +2,7 @@
 // app/controller/users.js
 const BaseController = require('./baseController');
 const { Route } = require('../decorators/index');
-const { Sequelize } = require('Sequelize');
+const { Sequelize } = require('sequelize');
 const { gt, lte, ne, in: opIn, like } = Sequelize.Op;
 class UserController extends BaseController {
   /**

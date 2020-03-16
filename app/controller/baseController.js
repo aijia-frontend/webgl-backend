@@ -20,4 +20,9 @@ class BaseController extends Controller {
     return result;
   }
 }
+BaseController.Auth = {
+  SuperAdmin: 'SuperAdmin',
+  Admin: 'Admin',
+  General: 'General'
+}
 module.exports = BaseController;

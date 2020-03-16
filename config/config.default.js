@@ -16,7 +16,7 @@ module.exports = appInfo => {
   config.keys = appInfo.name + '_eggjs jwt';
 
   // add your middleware config here
-  config.middleware = [ 'auth' ];
+  config.middleware = [ 'auth', 'params' ];
 
   // add your user config here
   const userConfig = {
@@ -48,17 +48,7 @@ module.exports = appInfo => {
     enable: true,
     routerMap: false, // 禁止自动注册路由, 否则会找不到注入对象
   };
-  // config.jwt = {
-  //   secret: "aijia123dr456beta789"
-  // };
-  // 配置session
-  // config.session = {
-  //   key: "SESSION_ID",
-  //   maxAge: 24 * 3600 * 1000,
-  //   httpOnly: true,
-  //   encrypt: true,
-  //   renew: true //滑动过期
-  // };
+
   config.sequelize = {
     dialect: 'mysql',
     host: '121.36.254.183',
@@ -83,16 +73,6 @@ module.exports = appInfo => {
       db: 0,
     },
   };
-  // config.customLogger = {
-  //   scheduleLogger: {
-  //      consoleLevel: 'NONE',
-  //     //  file: 'aaa/bbb/egg-schedule.log',   // 新日志文件路径
-  //    },
-  // };
-
-  // config.schedule = {
-  //     directory: [],
-  // };
   config.security = {
     csrf: {
       enable: false,
@@ -119,6 +99,30 @@ module.exports = appInfo => {
     // fileExtensions: [ '.apk' ] // 增加对 apk 扩展名的文件支持
     // whitelist: [ '.png' ], // 覆盖整个白名单，只允许上传 '.png' 格式
   };
+
+  //#region 暂不使用
+  // config.customLogger = {
+  //   scheduleLogger: {
+  //      consoleLevel: 'NONE',
+  //     //  file: 'aaa/bbb/egg-schedule.log',   // 新日志文件路径
+  //    },
+  // };
+
+  // config.schedule = {
+  //     directory: [],
+  // };
+  // config.jwt = {
+  //   secret: "aijia123dr456beta789"
+  // };
+  // 配置session
+  // config.session = {
+  //   key: "SESSION_ID",
+  //   maxAge: 24 * 3600 * 1000,
+  //   httpOnly: true,
+  //   encrypt: true,
+  //   renew: true //滑动过期
+  // };
+  //#endregion
   return {
     ...config,
     ...userConfig,

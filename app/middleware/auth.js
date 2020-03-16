@@ -3,8 +3,8 @@ const JWT = require('jsonwebtoken');
 module.exports = (options, app) => {
   return async function(ctx, next) {
     const token = ctx.request.header['access-token'];
-    if (ctx.path === '/register' || ctx.path === '/verify') {
-      await next({ name: 'sa' });
+    if (ctx.path === '/register' || ctx.path === '/verify' || ctx.path === '/users') {
+      await next();
     } else {
       if (!token) {
         ctx.status = 401;

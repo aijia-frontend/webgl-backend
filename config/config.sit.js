@@ -1,5 +1,4 @@
 module.exports = appInfo => {
-  console.log('===================================================================this is sit evenrit');
   const config = (exports = {});
   config.sequelize = {
     dialect: 'mysql',

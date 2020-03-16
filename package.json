@@ -37,8 +37,8 @@
     "node": ">=10.0.0"
   },
   "scripts": {
-    "start": "egg-scripts start --port=7001 --daemon --title=webgl-backend",
-    "stop": "egg-scripts stop --title=webgl-backend",
+    "start": "egg-scripts start --port=7001 --daemon --title=webgl-backend --ignore-stderr",
+    "stop": "egg-scripts stop --title=webgl-backend --ignore-stderr",
     "dev": "egg-bin dev env:sit",
     "dev:sit": "egg-bin dev --env=sit",
     "dev:pre": "egg-bin dev --env=pre",

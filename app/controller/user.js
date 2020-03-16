@@ -38,8 +38,14 @@ class UserController extends BaseController {
   async index(){
     const { service, ctx } = this;
     const users = await service.user.queryUsers();
-    console.log(users)
     ctx.body = users ? this.JsonBackResult(1, users, '查询成功') : this.JsonBackResult(0, undefined, '查询失败')
+  }
+
+  async queryPagingList(){
+    const { service, ctx } = this
+    const { pageNo, pageSize } = ctx.request.query
+    const users = await service.user.queryPagingList(pageNo, pageSize)
+    ctx.body = this.JsonBackResult(1, users, '')
   }
   /**
    * @description 新增用户

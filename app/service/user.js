@@ -1,9 +1,13 @@
 const Service = require('egg').Service;
 const md5 = require('js-md5');
 const JWT = require('jsonwebtoken');
+const BaseService = require('./baseService');
 
 
-class UserService extends Service {
+class UserService extends BaseService {
+  constructor(ctx){
+    super('User', ctx)
+  }
   /**
    * @description 创建用户
    * @param { name:String } 用户名
@@ -75,6 +79,24 @@ class UserService extends Service {
     return await ctx.model.User.findAll({
       attributes: ['id','userName','mobile','email','status','description','createdAt','loginAt','count']
     })
+  }
+
+  async queryPagingList(pageNo, pageSize){
+    const { ctx, app } = this
+    const { fn, col } = app.Sequelize;
+    console.log(await this.show({userName: 'caiyong'}))
+    const { count, rows } = await ctx.model.User.findAndCountAll({
+      attributes: ['id','userName','mobile','email','status','description','createdAt','loginAt','count'],
+      offset: (pageNo - 1) * pageSize,
+      limit: parseInt(pageSize)
+    })
+    return {
+      pageSize: Number(pageSize),
+      pageNo: Number(pageNo),
+      totalCount: count,
+      totalPage: Math.ceil(count / pageSize),
+      data: rows,
+    };
   }
 }
 

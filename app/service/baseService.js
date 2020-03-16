@@ -108,11 +108,11 @@ class BaseService extends Service {
    */
   async query(lamda) {
     const { app } = this
-    return await app.model[this.name].findOne({where: lamda},{raw:false})
+    return await app.model[this.name].findOne({where: Object.assign(lamda, { state: 1 })},{raw:false})
   }
   async queryById(id){
     const { app } = this
-    return await this.model[this.name].findByPk(id)
+    return await app.model[this.name].findByPk(id)
   }
   /**
    * @description 查询多条数据
